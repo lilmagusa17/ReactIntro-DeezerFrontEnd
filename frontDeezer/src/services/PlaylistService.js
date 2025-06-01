@@ -6,36 +6,10 @@ export const getPlaylists = async () => {
     let result = await axios.get(
         `${URL_BASE}/api/v1/playlists`
     );
+    console.log('Playlists fetched:', result.data);
     return result.data
 }
 
-// POST /api/v1/playlists
-/*
-EXAMPLE REQUEST
-POST /api/v1/playlists
-Content-Type: application/json
-
-{
-  "name": "My Chill Playlist",
-  "mood": "relaxed"
-}
-*/
-export const createPlaylist = async (playlist) => {
-    let result = await axios.post(
-        `${URL_BASE}/api/v1/playlists`,
-        playlist
-    );
-    return result.data
-}
-
-//DELETE /api/v1/playlists/1
-
-export const deletePlaylist = async (id) => {
-    let result = await axios.delete(
-        `${URL_BASE}/api/v1/playlists/${id}`
-    );
-    return result.data
-}
 
 //ADD TRACK TO PLAYLIST
 /*
@@ -59,6 +33,7 @@ export const addTrackToPlaylist = async (playlistId, track) => {
         `${URL_BASE}/api/v1/playlists/${playlistId}/tracks`,
         track
     );
+    console.log('Track added to playlist:', result.data);
     return result.data
 }
 
@@ -70,6 +45,7 @@ export const removeTrackFromPlaylist = async (playlistId, trackId) => {
     let result = await axios.delete(
         `${URL_BASE}/api/v1/playlists/${playlistId}/tracks/${trackId}`
     );
+    console.log('Track removed from playlist:', result.data);
     return result.data
 }
 
@@ -77,8 +53,7 @@ export const removeTrackFromPlaylist = async (playlistId, trackId) => {
 //Get tracks by playlist
 //GET /api/v1/playlists/{playlistId}/tracks
 export const getTracksByPlaylist = async (playlistId) => {
-    let result = await axios.get(
-        `${URL_BASE}/api/v1/playlists/${playlistId}/tracks`
-    );
+    let result = await axios.get(`${URL_BASE}/api/v1/playlists/${playlistId}/tracks`);
+    console.log('Tracks fetched for playlist:', result.data);
     return result.data
 }

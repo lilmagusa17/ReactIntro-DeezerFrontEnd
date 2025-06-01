@@ -1,5 +1,5 @@
 
-const ModalComponent = ({ isOpen, onClose, children }) => {
+const ModalComponent = () => {
     
   if (!isOpen) return null;
 

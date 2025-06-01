@@ -27,5 +27,6 @@ export const searchDeezer = async (query) => {
             }
         }
     );
+    console.log('Deezer search results:', result.data);
     return result.data
 }

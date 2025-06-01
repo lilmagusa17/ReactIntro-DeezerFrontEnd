@@ -1,35 +1,31 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const PlaylistCardComponent = () => {
+const PlaylistCardComponent = ({id, name, mood}) => {
+  const navigate = useNavigate();
 
-  const handleGetPlaylist = () => {
-    // Function to handle fetching playlist data
-    console.log("Fetching playlist data...");
-  };
-  // Call the function to fetch playlist data
- 
+  const handleClick = () => {
+    console.log(`Playlist ${id} clicked`);
+    navigate(`/playlist/${id}`, {
+    state: { playlistName: name }
+  });
+  }
 
   return (
     <>
       <div className="card bg-base-100 w-96 shadow-sm">
-      <figure>
-        <img
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt="Shoes"
-        />
-      </figure>
       <div className="card-body">
-        <h2 className="card-title">Card Title</h2>
+        <h2 className="card-title">{name}</h2>
         <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
+          {mood}
         </p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary" onClick={handleClick}>see details</button>
         </div>
       </div>
     </div>
     </>
   );
-}
+};
 
 export default PlaylistCardComponent;
