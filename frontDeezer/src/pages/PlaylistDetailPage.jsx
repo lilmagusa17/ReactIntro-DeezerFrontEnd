@@ -17,7 +17,10 @@ const PlaylistDetailPage = () => {
   if (isError) return <div className="text-center mt-10 text-red-500">Error al cargar la playlist.</div>;
 
   return (
-    <div className="p-6">
+    <>
+
+    <div className='bg-base-100 min-h-screen justify-center items-center flex align-center'>
+      <div className="p-6">
       <h1 className="text-3xl font-bold">{playlistName}</h1>
 
       <p className="text-gray-500 mb-6">Songs: {tracks.length}</p>
@@ -42,6 +45,9 @@ const PlaylistDetailPage = () => {
         )}
       </div>
     </div>
+    </div>
+    
+    </>
   );
 };
 

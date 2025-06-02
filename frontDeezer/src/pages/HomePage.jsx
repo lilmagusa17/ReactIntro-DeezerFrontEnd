@@ -12,9 +12,12 @@ const HomePage = () => {
   if (isError) return <div className="text-center mt-10 text-red-500">Error al cargar las playlists.</div>;
 
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold mb-6">Playlists disponibles</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <>
+
+    <div className='bg-base-100 min-h-screen justify-center items-center flex align-center'>
+      <div className="p-6">
+      <h1 className="text-3xl font-bold mb-6 align-center">Playlists disponibles</h1>
+      <div className="w-full max-w-lg mx-auto m-2">
         {playlists.map((playlist) => (
           <PlaylistCardComponent
             key={playlist.id}
@@ -25,6 +28,9 @@ const HomePage = () => {
         ))}
       </div>
     </div>
+    </div>
+    
+    </>
   );
 };
 
