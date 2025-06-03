@@ -7,8 +7,8 @@ export const getPlaylists = async () => {
         `${URL_BASE}/api/v1/playlists`
     );
     console.log('Playlists fetched:', result.data);
-    return result.data
-}
+    return result.data;
+};
 
 
 //ADD TRACK TO PLAYLIST
@@ -29,14 +29,11 @@ Content-Type: application/json
 }
 */
 export const addTrackToPlaylist = async (playlistId, track) => {
-    let result = await axios.post(
-        `${URL_BASE}/api/v1/playlists/${playlistId}/tracks`,
-        track
-    );
+    let result = await axios.post(`${URL_BASE}/api/v1/playlists/${playlistId}/tracks`, track);
     console.log('Track added to playlist:', result.data);
-    return result.data
-}
-
+    return result.data;
+};
+    
 //REMOVE TRACK FROM PLAYLIST
 /*
 EXAMPLE REQUEST
@@ -46,8 +43,8 @@ export const removeTrackFromPlaylist = async (playlistId, trackId) => {
         `${URL_BASE}/api/v1/playlists/${playlistId}/tracks/${trackId}`
     );
     console.log('Track removed from playlist:', result.data);
-    return result.data
-}
+    return result.data;
+};
 
 
 //Get tracks by playlist
@@ -55,5 +52,5 @@ export const removeTrackFromPlaylist = async (playlistId, trackId) => {
 export const getTracksByPlaylist = async (playlistId) => {
     let result = await axios.get(`${URL_BASE}/api/v1/playlists/${playlistId}/tracks`);
     console.log('Tracks fetched for playlist:', result.data);
-    return result.data
-}
+    return result.data; 
+};

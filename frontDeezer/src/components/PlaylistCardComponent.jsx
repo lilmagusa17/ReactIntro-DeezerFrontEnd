@@ -18,7 +18,7 @@ const PlaylistCardComponent = ({ id, name, mood }) => {
           onClick={handleClick}
         >
           <div className="flex items-center gap-4">
-            <div className="bg-primary text-primary-content p-3 rounded-full shadow-sm">
+            <div className="bg-secondary text-secondary-content p-3 rounded-full shadow-sm">
               <Music2 className="w-6 h-6" />
             </div>
             <div>
@@ -31,7 +31,7 @@ const PlaylistCardComponent = ({ id, name, mood }) => {
             </div>
           </div>
 
-          <button className="btn btn-xs btn-primary ml-4">Ver detalles</button>
+          <button className="btn btn-xs btn-secondary ml-4">Ver detalles</button>
         </div>
     </>
   );

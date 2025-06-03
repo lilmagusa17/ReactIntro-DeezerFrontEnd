@@ -19,14 +19,8 @@ EXAMPLE RESPONSE
 }
 */
 export const searchDeezer = async (query) => {
-    let result = await axios.get(
-        `${URL_BASE}/api/v1/deezer/search`,
-        {
-            params: {
-                q: query
-            }
-        }
-    );
+    const result  = await axios.get(`${URL_BASE}/api/v1/deezer/search?q=${encodeURIComponent(query)}`);
     console.log('Deezer search results:', result.data);
-    return result.data
+    return result.data;
+  
 }

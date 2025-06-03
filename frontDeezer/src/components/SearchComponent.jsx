@@ -1,41 +1,38 @@
-const SearchComponent = () => {
-  const [query, setQuery] = useState("");
+import React from "react";
+import { ListPlus } from "lucide-react";
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSearch(query);
-  };
-
+const SearchComponent = ({ title, duration, rank, preview, artist, album, onAdd }) => {
   return (
-    <>
-      <form onSubmit={handleSubmit} className="flex items-center gap-4 mb-4">
-        <label className="input">
-          <svg
-            className="h-[1em] opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.3-4.3"></path>
-            </g>
-          </svg>
-          <input
-            type="search"
-            className="grow"
-            placeholder="Search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </label>
-      </form>
-    </>
+    <div className="flex items-center gap-4 p-4 bg-base-200 rounded-2xl shadow-md">
+      <img
+        src={album.cover}
+        alt={title}
+        className="w-16 h-16 rounded-xl object-cover"
+      />
+      <div className="flex-1">
+        <h3 className="text-lg font-semibold">{title}</h3>
+        <p className="text-sm text-gray-500">{artist.name} · {album.title}</p>
+        <p className="text-xs text-gray-400">
+         {Math.floor(duration / 60)}:{String(duration % 60).padStart(2, '0')}
+        </p>
+      </div>
+      
+      <ListPlus className="text-white/60 hover:text-green-400 cursor-pointer"
+        onClick={() => {
+          const trackData = {
+            title,
+            duration,
+            rank,
+            preview,
+            artistName: artist.name,
+            albumTitle: album.title,
+            artistPicture: artist.picture,
+            albumCover: album.cover
+          };
+          onAdd(trackData);
+        }} />
+    </div>
   );
 };
+
 export default SearchComponent;

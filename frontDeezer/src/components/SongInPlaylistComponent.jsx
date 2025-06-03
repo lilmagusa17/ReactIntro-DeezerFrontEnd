@@ -1,3 +1,5 @@
+
+import { Trash } from 'lucide-react';
 const SongInPlaylistComponent = ({
   id,
   title,
@@ -7,6 +9,7 @@ const SongInPlaylistComponent = ({
   artist,
   artistPicture,
   cover,
+  onDelete
 }) => {
   const formatDuration = (seconds) => {
     const minutes = Math.floor(seconds / 60);
@@ -16,7 +19,7 @@ const SongInPlaylistComponent = ({
 
   return (
     <>
-      <div className="w-full max-w-3xl mx-auto">
+      <div className="w-full mx-auto">
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 p-4 bg-base-200 rounded-xl shadow-md hover:bg-base-300 transition-colors duration-200">
           {/* Álbum cover */}
           {cover && (
@@ -37,20 +40,17 @@ const SongInPlaylistComponent = ({
             <p className="text-sm text-gray-500">
               {artist} — <span className="italic">{album}</span>
             </p>
+            <span className="text-sm text-gray-400">
+              {formatDuration(duration)}
+            </span>
           </div>
 
           {/* Columna derecha */}
           <div className="flex items-center gap-3">
-            {artistPicture && (
-              <img
-                src={artistPicture}
-                alt={`${artist} picture`}
-                className="w-10 h-10 rounded-full object-cover"
-              />
-            )}
-            <span className="text-sm text-gray-400">
-              {formatDuration(duration)}
-            </span>
+            
+            {/* eliminar */}
+            <Trash className="text-white/60 hover:text-red-400 cursor-pointer" onClick={() => onDelete(id)} />
+
           </div>
         </div>
       </div>
